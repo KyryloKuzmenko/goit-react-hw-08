@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectError, selectLoading } from '../../redux/contacts/selectors';
 import { fetchContacts } from '../../redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,9 @@ const ContactsPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts()).unwrap().then(() => {
+      toast.success("Contacts loaded successfully")
+    });
   }, [dispatch]);
 
   return (
