@@ -9,9 +9,10 @@ import {
   selectAuthUser,
 } from '../../redux/auth/selectors';
 import { apiLogout, apiRefreshUser } from '../../redux/auth/operations';
-import {RestrictedRoute} from '../../components/RestrictedRoute/RestrictedRoute';
+import { RestrictedRoute } from '../../components/RestrictedRoute/RestrictedRoute';
 import RegisterPage from '../../pages/RegistrationPage/RegistrationPage';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
+import Layout from '../Layout/Layout';
 
 const RegistrationPage = lazy(() =>
   import('../../pages/RegistrationPage/RegistrationPage')
@@ -32,77 +33,26 @@ function App() {
     dispatch(apiRefreshUser());
   }, [dispatch]);
 
-  const onLogut = () => {
-    dispatch(apiLogout());
-  }
-
   if (isRefreshing) return <p>user is refreshing, please wait</p>;
 
   return (
-    <div>
-      <header>
-        <nav className={css.nav}>
-          <NavLink
-            className={({ isActive }) => clsx(css.link, isActive && css.active)}
-            to="/"
-          >
-            Home
-          </NavLink>
-          {isLoggedIn ? (
-            <>
-              <NavLink
-                className={({ isActive }) =>
-                  clsx(css.link, isActive && css.active)
-                }
-                to="/contacts"
-              >
-                Contacts
-              </NavLink>
-              <button type='button' onClick={onLogut}>Logout</button>
-            </>
-          ) : (
-            <>
-              <NavLink
-                className={({ isActive }) =>
-                  clsx(css.link, isActive && css.active)
-                }
-                to="/login"
-              >
-                Login
-              </NavLink>
-              <NavLink
-                className={({ isActive }) =>
-                  clsx(css.link, isActive && css.active)
-                }
-                to="/register"
-              >
-                Register
-              </NavLink>
-            </>
-          )}
-        </nav>
-      </header>
-
-      <main>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Routes>
-            <Route
-              path="/register"
-              element={<RestrictedRoute component={<RegisterPage />} />}
-            />
-            <Route
-              path="/login"
-              element={<RestrictedRoute component={<LoginPage />} />}
-            />
-            <Route
-              path="/contacts"
-              element={<PrivateRoute component={<ContactsPage />} />}
-            />
-            <Route path="/" element={<HomePage />} />
-          </Routes>
-        </Suspense>
-      </main>
-    </div>
+    <Layout>
+      <Routes>
+        <Route
+          path="/register"
+          element={<RestrictedRoute component={<RegisterPage />} />}
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
+        />
+        <Route
+          path="/contacts"
+          element={<PrivateRoute component={<ContactsPage />} />}
+        />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Layout>
   );
 }
 

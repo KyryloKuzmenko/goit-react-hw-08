@@ -1,4 +1,4 @@
-/* .link {
+.link {
   display: inline-flex;
   padding: 20px;
   font-size: 18px;
@@ -15,8 +15,3 @@
   background-color: black;
   color: #fff;
 }
-
-.nav {
-  display: flex;
-  gap: 12px;
-} */
