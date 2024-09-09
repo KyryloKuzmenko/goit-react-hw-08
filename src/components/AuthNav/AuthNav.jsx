@@ -6,7 +6,7 @@ import clsx from "clsx";
 const AuthNav = () => {
 
     return (
-      <div>
+      <div className={css.linkWrap}>
         <NavLink
           className={({ isActive }) => clsx(css.link, isActive && css.active)}
           to="/login"

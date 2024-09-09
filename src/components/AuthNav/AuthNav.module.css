@@ -15,3 +15,9 @@
   background-color: black;
   color: #fff;
 }
+
+.linkWrap {
+  min-width: 230px;
+  display: flex;
+  justify-content: space-between;
+}

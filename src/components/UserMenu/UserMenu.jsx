@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { apiLogout } from "../../redux/auth/operations";
+import css from "./UserMenu.module.css"
 
 const UserMenu = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const UserMenu = () => {
     
     return (
       <div>
-        <button type="button" onClick={onLogut}>
+        <button className={css.btn} type="button" onClick={onLogut}>
           Logout
         </button>
       </div>

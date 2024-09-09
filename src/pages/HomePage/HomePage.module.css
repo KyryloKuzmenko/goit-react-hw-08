@@ -1,0 +1,11 @@
+.notice {
+    font-size: 18px;
+    color: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.greeting {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}

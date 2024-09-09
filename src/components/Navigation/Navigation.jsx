@@ -8,7 +8,7 @@ const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
 
     return (
-      <nav>
+      <nav className={css.nav}>
         <NavLink
           className={({ isActive }) => clsx(css.link, isActive && css.active)}
           to="/"
