@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { selectError, selectLoading } from '../../redux/contacts/selectors';
 import { fetchContacts } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
+import style from './ContactPage.module.css'
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={style.wrap}>
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
